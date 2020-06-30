@@ -8,13 +8,63 @@
 
 
 //Generate a 16 random numbers array . Value from 0 to 100;
+
 var cpuList = myRandomArray(8,0,100);
 console.log(cpuList);
+var i = 0;
+var userList =[];
+var userNum =0;
+var contatore = 0;
+
+
+
+while(i < 4 && contatore == 0){
+  console.log(contatore);
+  var userNum = parseInt(prompt("Digita un numero tra 0 e 100:"));
+  if((userNum<=100) && (!isNaN(userNum) && contatore == 0)) {
+    var result = nuovoWhile(cpuList, userNum, userList);
+    console.log("result",result);
+    console.log("cpulist",cpuList);
+      console.log("userList",userList);
+
+      //   if(cpuList.indexOf(i) !== -1) {
+      //     console.log(cpuList.indexOf(i));
+      //     alert("Hai vinto");
+      //   }
+      //     else{
+      //       alert("Hai perso");
+      //     }
+
+
+  } else {
+    alert("fuori dal gioco");
+      contatore = i+1;
+  }i++;
+}
+
+function nuovoWhile(list,num,result){
+  var result=[];
+ var i=0;
+  while(i<16){
+    if (list.indexOf(i) !== -1){
+    console.log("aaaaa",list.indexOf(i) !== -1);
+      result.push(num);
+      return result;
+    } else{
+      return false;
+    }
+
+  } i++;
+}
+
+
 
 function myRandomArray(arrayLength,min,max){
   var list=[];
   while(list.length < arrayLength){
-      var randomNum = Math.floor(Math.random() * (max - min + 1)+min);
-      if(list.indexOf(randomNum) === -1) list.push(randomNum);
+    var randomNum = Math.floor(Math.random() * (max - min + 1)+min);
+      if(list.indexOf(randomNum) === -1) {
+        list.push(randomNum);
+      }
   } return list;
 }
