@@ -21,10 +21,10 @@ var contatore = 0;
 while(i < 4 && contatore == 0){
   console.log(contatore);
   var userNum = parseInt(prompt("Digita un numero tra 0 e 100:"));
-  if((userNum<=100) && (!isNaN(userNum) && contatore == 0)) {
-    var result = nuovoWhile(cpuList, userNum, userList);
-    console.log("result",result);
-    console.log("cpulist",cpuList);
+    if((userNum<=100) && (!isNaN(userNum) && contatore == 0)) {
+      var result = compareTwoArrays(cpuList, userList,userNum);
+      console.log("result",result);
+      console.log("cpulist",cpuList);
       console.log("userList",userList);
 
       //   if(cpuList.indexOf(i) !== -1) {
@@ -42,22 +42,18 @@ while(i < 4 && contatore == 0){
   }i++;
 }
 
-function nuovoWhile(list,num,result){
-  var result=[];
- var i=0;
-  while(i<16){
-    if (list.indexOf(i) !== -1){
-    console.log("aaaaa",list.indexOf(i) !== -1);
-      result.push(num);
-      return result;
-    } else{
-      return false;
+function compareTwoArrays(listA,listB,num){
+  var enter = false;
+  for (var i = 0; i < listA.length; i++) {
+    if( (listA.indexOf(i) !== -1) && (listB.indexOf(i) !== -1)){
+      listA.push(num);
+      listB.push(num);
+      return listA;
     }
-
-  } i++;
+    enter = true;
+    return false;
+  }
 }
-
-
 
 function myRandomArray(arrayLength,min,max){
   var list=[];
