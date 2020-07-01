@@ -7,53 +7,85 @@
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
 
 
-//Generate a 16 random numbers array . Value from 0 to 100;
 
-var cpuList = myRandomArray(8,0,100);
+
+
+// Generate a 16 random numbers array . Value from 0 to 100;
+var tentativi = 4;
+var min=1;
+var max = 100;
+var lunghezzaArray = 8;
+var cpuList = myRandomArray(lunghezzaArray ,min,max);
 console.log(cpuList);
 var i = 0;
 var userList =[];
+console.log(userList);
 var userNum =0;
 var contatore = 0;
+var trovato = false;
+var punteggio = 0;
 
 
 
-while(i < 4 && contatore == 0){
-  console.log(contatore);
-  var userNum = parseInt(prompt("Digita un numero tra 0 e 100:"));
-    if((userNum<=100) && (!isNaN(userNum) && contatore == 0)) {
-      var result = compareTwoArrays(cpuList, userList,userNum);
-      console.log("result",result);
-      console.log("cpulist",cpuList);
-      console.log("userList",userList);
 
-      //   if(cpuList.indexOf(i) !== -1) {
-      //     console.log(cpuList.indexOf(i));
-      //     alert("Hai vinto");
-      //   }
-      //     else{
-      //       alert("Hai perso");
-      //     }
+while(i < tentativi && trovato == false) {
+  var userNum = parseInt(prompt("Digita un numero tra 1 e 100:"));
+  if(isInRange(min,max,userNum) == true ) {
+    console.log(userList);
 
-
+    if(isInArray(userList,userNum)) {
+      userNum = parseInt(prompt("Rifai:"));
+      tentativi++;
+      console.log("rifai", tentativi);
+    } else {
+        userList.push(userNum);
+        console.log(userList);
+          if (isInArray(cpuList,userNum)) {
+            console.log("Hai perso");
+            trovato = true;
+          } else{
+            punteggio++;
+            console.log("ultimo else PUNTEGGIO", punteggio);
+          }
+      }
   } else {
     alert("fuori dal gioco");
-      contatore = i+1;
+      trovato = true;
   }i++;
 }
 
-function compareTwoArrays(listA,listB,num){
-  var enter = false;
-  for (var i = 0; i < listA.length; i++) {
-    if( (listA.indexOf(i) !== -1) && (listB.indexOf(i) !== -1)){
-      listA.push(num);
-      listB.push(num);
-      return listA;
-    }
-    enter = true;
-    return false;
-  }
+
+console.log("punteggio",punteggio);
+
+if(punteggio==tentativi){
+  console.log("SEI UN CAMPIONE", "punteggio", punteggio, "tentativi" , tentativi);
+} else{
+  console.log("Quasi! punteggio", punteggio, "tentativi", tentativi);
 }
+
+
+
+
+var trovato = false;
+var userListX =[];
+var i = 0;
+
+
+
+
+function isDuplicate (list, num){
+  var i =0;
+  var trovato = false;
+    while(i<list.length && trovato == false ){
+      if(list[i] == num) {
+        trovato = true;
+        return true;
+    } i++;
+  }
+  return false;
+}
+
+
 
 function myRandomArray(arrayLength,min,max){
   var list=[];
@@ -63,4 +95,25 @@ function myRandomArray(arrayLength,min,max){
         list.push(randomNum);
       }
   } return list;
+}
+
+function isInArray(array,elemento){
+  var i = 0;
+  var trovato = false;
+  while (i< array.length && trovato ==false){
+    if (array[i] == elemento){
+      trovato = true;
+    }
+    i++;
+  }
+  return trovato;
+}
+
+
+
+function isInRange (min,max,num){
+  if(num>max || num<min || isNaN(num) ){
+  return false;
+}
+return true;
 }
