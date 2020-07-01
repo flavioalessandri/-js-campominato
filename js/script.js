@@ -6,18 +6,41 @@
 // La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
 // Al termine della partita il software deve comunicare il finalScore, cioè il numero di volte che l’utente ha inserito un numero consentito.
 
+var start = document.getElementById("start");
+
+start.addEventListener("click", function(){
+
+document.getElementById("result").innerHTML = "";
+document.getElementById("finalScore").innerHTML = "";
 
 
+var difficultyLevel = document.getElementById("difficultyLevel").value;
+  if(difficultyLevel === "easy" ) {
+    var arrayLength = 100;
+  } else if (difficultyLevel === "notSoEasy" ) {
+    var arrayLength = 80;
+  } else if (difficultyLevel === "veryLucky" ) {
+    var arrayLength = 50;
+  }
+
+console.log("Difficulty Level: ",difficultyLevel);
+console.log("array Length: ", arrayLength); //Array length
 
 
+  var howManyNum = document.getElementById("howMany").value;
+    if(howManyNum === "four" ) {
+      var howMany = 4;
+    } else if (howManyNum === "ten" ) {
+      var howMany = 10;
+    } else if (howManyNum === "sixteen" ) {
+      var howMany = 16;
+    }
+
+console.log("How many numbers ", howMany); //how many times User can choose numbers
 
 var userNum =0; // User number via prompt
 var min=1; // Min Range value
 var max = 100; // Max Range value
-var howMany = 4; //how many times User can choose numbers
-console.log("Attempts: ", howMany);
-
-var arrayLength = 8; //Array length
 var i = 0; //counter for cycle
 var userList =[]; // the User list to fill with User numbers after every cycle
 console.log(userList);
@@ -64,9 +87,15 @@ while(i < howMany && finded == false) {
 
 if(finalScore==(howMany-repeatedNum)){
   console.log("You WIN! ", " Final Score: ", finalScore, "Attempts: " , howMany-repeatedNum);
+  document.getElementById("result").innerHTML = "You WIN!";
+  document.getElementById("finalScore").innerHTML = " Final Score: " + finalScore + "! " + " Attempts: " + (howMany-repeatedNum);
 } else{
   console.log("Unfortunately You Loose!",  "Final Score: ", finalScore);
+  document.getElementById("result").innerHTML = "Unfortunately you Loose!";
+  document.getElementById("finalScore").innerHTML = " Final Score: " + finalScore + "! ";
 }
+
+}) //end of button Start
 
 // .....My Functions............................................
 

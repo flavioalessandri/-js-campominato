@@ -15,9 +15,37 @@
     <h1>Campominato</h1>
   </header>
   <main>
-    <div class="container">
+    <div class="main-container">
+
+      <div class="section">
+        <label for="difficultyLevel"> DIfficulty Level!</label>
+        <select id="difficultyLevel" class="" name="">Difficulty Level
+          <option value="easy">Easy (0-100)</option>
+          <option value="notSoEasy">Not so Easy (0-80)</option>
+          <option value="veryLucky">Very Lucky (0-50)</option>
+        </select>
+      </div>
+
+      <div class="section">
+        <label for="howMany"> How Many Attempts?</label>
+        <select id="howMany" class="" name="">How Many
+          <option value="four">4 Attempts</option>
+          <option value="ten">10 Attempts</option>
+          <option value="sixteen">16 Attempts</option>
+        </select>
+      </div>
+
+      <div class="section">
+        <button id="start" type="button" name="button">💣</button>
+        <div class="res">
+          <h3 id="result"></h3>
+          <h3 id="finalScore"></h3>
+        </div>
+
+      </div>
 
     </div>
+
   </main>
   <script type="text/javascript" src="js/script.js"></script>
 </body>
