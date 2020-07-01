@@ -16,15 +16,15 @@ document.getElementById("finalScore").innerHTML = "";
 
 var difficultyLevel = document.getElementById("difficultyLevel").value;
   if(difficultyLevel === "easy" ) {
-    var arrayLength = 100;
+    var max = 100;
   } else if (difficultyLevel === "notSoEasy" ) {
-    var arrayLength = 80;
+    var max = 80;
   } else if (difficultyLevel === "veryLucky" ) {
-    var arrayLength = 50;
+    var max = 50;
   }
 
 console.log("Difficulty Level: ",difficultyLevel);
-console.log("array Length: ", arrayLength); //Array length
+console.log("Max range value: ", max); //Max Range value
 
 
   var howManyNum = document.getElementById("howMany").value;
@@ -37,10 +37,9 @@ console.log("array Length: ", arrayLength); //Array length
     }
 
 console.log("How many numbers ", howMany); //how many times User can choose numbers
-
+var arrayLength = 16; //Array length
 var userNum =0; // User number via prompt
 var min=1; // Min Range value
-var max = 100; // Max Range value
 var i = 0; //counter for cycle
 var userList =[]; // the User list to fill with User numbers after every cycle
 console.log(userList);
